@@ -3,13 +3,13 @@ import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://licitacao-three.vercel.app'),
-  title: 'R7Dital - Análise de Licitação',
+  title: 'ERP Locast',
   description:
-    'Aplicação Web da R7Dital para análise de licitações de produtos de informática',
+    'ERP Locast',
   openGraph: {
-    title: 'R7Dital - Análise de Licitação',
+    title: 'ERP Locast',
     description:
-      'Aplicação Web da R7Dital para análise de licitações de produtos de informática',
+      'ERP Locast',
     url: 'https://licitacao-three.vercel.app',
     type: 'website',
     images: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
         url: '/og-image.jpg',
         width: 1400,
         height: 440,
-        alt: 'R7Dital - Análise de Licitação',
+        alt: 'ERP Locast',
       },
     ],
   },
