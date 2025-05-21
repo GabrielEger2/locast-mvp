@@ -1,5 +1,6 @@
 'use client'
-import { useState } from 'react'
+
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image' // Otimização de imagens
 
@@ -10,19 +11,38 @@ export default function LoginPage() {
   const [error, setError] = useState('')
   const [rememberMe, setRememberMe] = useState(false)
 
+  useEffect(() => {
+    // Limpar token existente ao entrar na página de login
+    localStorage.removeItem('token')
+    
+    // Recuperar email se existir
+    const savedEmail = localStorage.getItem('userEmail')
+    if (savedEmail) {
+      setEmail(savedEmail)
+      setRememberMe(true)
+    }
+  }, [])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
+    
     try {
-      // Validação das credenciais específicas
       if (email === 'teste@locast.com' && password === '123') {
+        if (rememberMe) {
+          localStorage.setItem('userEmail', email)
+        } else {
+          localStorage.removeItem('userEmail')
+        }
+        
         localStorage.setItem('token', 'mock-jwt-token')
-        router.push('/PaginaInicial')
+        router.replace('/PaginaInicial')
       } else {
         setError('Email ou senha incorretos')
       }
     } catch (err) {
       setError('Erro ao fazer login')
+      console.error('Erro no login:', err)
     }
   }
 
