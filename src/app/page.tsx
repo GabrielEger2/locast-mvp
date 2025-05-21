@@ -1,26 +1,28 @@
 'use client'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import Image from 'next/image' // Otimização de imagens
 
-export default function Page() {
+export default function LoginPage() {
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
   const [rememberMe, setRememberMe] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+    setError('')
     try {
-      // Aqui você implementaria sua lógica de autenticação
-      // Por exemplo, chamada à API
-      console.log('Login:', { email, password, rememberMe })
-      
-      // Redirecionar após login bem-sucedido
-      router.push('/dashboard')
-    } catch (error) {
-      console.error('Erro no login:', error)
+      // Validação das credenciais específicas
+      if (email === 'teste@locast.com' && password === '123') {
+        localStorage.setItem('token', 'mock-jwt-token')
+        router.push('/PaginaInicial')
+      } else {
+        setError('Email ou senha incorretos')
+      }
+    } catch (err) {
+      setError('Erro ao fazer login')
     }
   }
 
@@ -32,10 +34,12 @@ export default function Page() {
           href="/"
           className="mb-6 flex items-center text-2xl font-semibold text-white"
         >
-          <img
+          <Image
             src="https://static.wixstatic.com/media/a5c95c_7ac329ac7b444b18a6f8272f91153823~mv2.png"
             alt="Locast Guindastes"
             className="mr-2 h-10 w-10"
+            width={40}
+            height={40}
           />
           Locast Guindastes
         </a>
@@ -46,10 +50,13 @@ export default function Page() {
             Acesse sua conta
           </h1>
 
-          <form 
-            className="space-y-5" 
-            onSubmit={handleSubmit}
-          >
+          <form className="space-y-5" onSubmit={handleSubmit}>
+            {/* Exibe mensagem de erro, se houver */}
+            {error && (
+              <div className="mb-4 rounded bg-red-100 px-4 py-2 text-sm text-red-700">
+                {error}
+              </div>
+            )}
             {/* Email */}
             <div>
               <label
@@ -97,10 +104,10 @@ export default function Page() {
                   onChange={(e) => setRememberMe(e.target.checked)}
                   className="h-4 w-4 rounded border-gray-300 text-[#F09A00] shadow-sm focus:ring-[#F09A00]"
                 />
-                Lembrar‑me
+                Lembrar-me
               </label>
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="font-medium text-[#F09A00] hover:underline"
               >
                 Esqueceu a senha?
