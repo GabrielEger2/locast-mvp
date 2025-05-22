@@ -7,12 +7,10 @@ import { ArrowRight } from 'lucide-react'
 const actions = [
   { label: 'Cadastro de Clientes', href: '/cadastros/clientes' },
   { label: 'Cadastro de Funcionários', href: '/cadastros/funcionarios' },
-  { label: 'Cadastro de Caminhões', href: '/cadastros/caminhoes' },
-  { label: 'Cadastro de Guindastes', href: '/cadastros/guindastes' },
-  { label: 'Criar O.S.', href: '/os/criar' },
+  { label: 'Cadastro de equipamentos', href: '/cadastros/equipamentos' },
+  { label: 'Ordens de Serviço.', href: '/os/criar' },//Ver odens de serviço, ter um filtro para criar, ter um filtro 
   { label: 'Faturar O.S.', href: '/os/faturar' },
-  { label: 'Contas a Pagar', href: '/financeiro/pagar' },
-  { label: 'Contas a Receber', href: '/financeiro/receber' },
+  { label: 'Contas a Pagar/Receber.', href: '/financeiro/pagar-receber' },//abrir para colocar se é receita ou despesa
 ]
 
 export default function PaginaInicial() {

@@ -1,5 +1,5 @@
 'use client'
-export default function PaginaInicial() {  // <- Nome alterado para corresponder à rota
+export default function CadastroOS() {  
   return (
     <section className="min-h-screen flex items-center justify-center bg-[#16222F]">
       <div className="w-full max-w-2xl px-6 py-10">
