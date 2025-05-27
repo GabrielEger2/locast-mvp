@@ -8,11 +8,12 @@ const actions = [
   { label: 'Cadastro de Clientes', href: '/cadastros/clientes' },
   { label: 'Cadastro de Funcionários', href: '/cadastros/funcionarios' },
   { label: 'Cadastro de equipamentos', href: '/cadastros/equipamentos' },
-  { label: 'Ordens de Serviço.', href: '/os/criar' },//Ver odens de serviço, ter um filtro para criar, ter um filtro 
-  { label: 'Faturar O.S.', href: '/os/faturar' },//Ao inves de criar uma nova pagina de serviço na pagina (continua abaixo)
+  { label: 'Ordens de Serviço/Faturar OS', href: '/PageCadastros' },//Ver odens de serviço, ter um filtro para criar, ter um filtro 
+  //Ao inves de criar uma nova pagina de serviço na pagina (continua abaixo)
   // de ordens de serviço vai ter uma tag (continua abaixo)
   // "FATURAR" aonde pode ser clicado e leva para tela de faturamento da OS em especifico
   { label: 'Contas a Pagar/Receber.', href: '/financeiro/pagar-receber' },//abrir para colocar se é receita ou despesa
+  { label: 'Gestão de Estoque', href: '/estoque/gerenciar' },//Cadastrar o estoque e valor gasto no estoque
 ]
 
 export default function PaginaInicial() {
