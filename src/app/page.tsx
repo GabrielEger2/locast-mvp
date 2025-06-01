@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import Image from 'next/image'; // Otimização de imagens
 import { useRouter } from 'next/navigation'
-import Image from 'next/image' // Otimização de imagens
+import { useEffect, useState } from 'react'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -12,10 +12,8 @@ export default function LoginPage() {
   const [rememberMe, setRememberMe] = useState(false)
 
   useEffect(() => {
-    // Limpar token existente ao entrar na página de login
     localStorage.removeItem('token')
-    
-    // Recuperar email se existir
+
     const savedEmail = localStorage.getItem('userEmail')
     if (savedEmail) {
       setEmail(savedEmail)
@@ -26,7 +24,7 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
-    
+
     try {
       if (email === 'teste@locast.com' && password === '123') {
         if (rememberMe) {
@@ -34,7 +32,7 @@ export default function LoginPage() {
         } else {
           localStorage.removeItem('userEmail')
         }
-        
+
         localStorage.setItem('token', 'mock-jwt-token')
         router.replace('/PaginaInicial')
       } else {
@@ -49,7 +47,6 @@ export default function LoginPage() {
   return (
     <section className="min-h-screen flex items-center justify-center bg-[#16222F]">
       <div className="w-full max-w-md px-6 py-8 flex flex-col items-center">
-        {/* Logo e nome */}
         <a
           href="/"
           className="mb-6 flex items-center text-2xl font-semibold text-white"
