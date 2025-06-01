@@ -32,7 +32,11 @@ export default function RootLayout({
     <html lang="en">
       <body className="overflow-x-hidden">
         <Navbar />
-        {children}
+        <main className="flex justify-center px-4 min-h-screen">
+          <section className="w-full max-w-[1500px] mt-20 mb-10">
+            {children}
+          </section>
+        </main>
         <Footer />
       </body>
     </html>

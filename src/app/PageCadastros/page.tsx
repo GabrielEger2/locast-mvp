@@ -1,14 +1,14 @@
 'use client'
-import React, { useState, useMemo } from 'react'
 import {
-  Edit,
-  Trash2,
   DollarSign,
+  Edit,
   FileText,
   MoreVertical,
   Search,
+  Trash2,
 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import React, { useMemo, useState } from 'react'
 
 const menuItems = [
   { icon: Edit, label: 'Editar', color: 'text-gray-900' },
@@ -101,7 +101,9 @@ const ORDERS: OrdemServico[] = [
  ********************/
 export default function OrdensdeServico() {
   const router = useRouter()
-  const [filterKey, setFilterKey] = useState<'order' | 'client' | 'value'>('order')
+  const [filterKey, setFilterKey] = useState<'order' | 'client' | 'value'>(
+    'order',
+  )
   const [filterText, setFilterText] = useState('')
 
   // filtragem memoizada para performance
@@ -134,7 +136,9 @@ export default function OrdensdeServico() {
       <div className="max-w-7xl mx-auto">
         {/* Cabeçalho */}
         <header className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">Ordens de Serviço</h1>
+          <h1 className="text-3xl font-bold text-white mb-2">
+            Ordens de Serviço
+          </h1>
 
           <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
             <p className="text-gray-300">Gerencie suas ordens de serviço</p>
@@ -150,7 +154,9 @@ export default function OrdensdeServico() {
         <section className="mb-6 flex flex-wrap items-center gap-2">
           <select
             value={filterKey}
-            onChange={(e) => setFilterKey(e.target.value as 'order' | 'client' | 'value')}
+            onChange={(e) =>
+              setFilterKey(e.target.value as 'order' | 'client' | 'value')
+            }
             className="border border-gray-300 rounded-md p-2 text-sm bg-white focus:ring-[#F09A00] focus:border-[#F09A00]"
           >
             <option value="order">Ordem de Serviço</option>
@@ -185,12 +191,24 @@ export default function OrdensdeServico() {
             <table className="w-full table-auto">
               <thead className="bg-gray-50">
                 <tr className="text-left">
-                  <th className="px-6 py-4 text-sm font-semibold text-gray-600">#</th>
-                  <th className="px-6 py-4 text-sm font-semibold text-gray-600">Ordem de Serviço</th>
-                  <th className="px-6 py-4 text-sm font-semibold text-gray-600">Cliente</th>
-                  <th className="px-6 py-4 text-sm font-semibold text-gray-600">Valor</th>
-                  <th className="px-6 py-4 text-sm font-semibold text-gray-600">Status</th>
-                  <th className="px-6 py-4 text-sm font-semibold text-gray-600">Ações</th>
+                  <th className="px-6 py-4 text-sm font-semibold text-gray-600">
+                    #
+                  </th>
+                  <th className="px-6 py-4 text-sm font-semibold text-gray-600">
+                    Ordem de Serviço
+                  </th>
+                  <th className="px-6 py-4 text-sm font-semibold text-gray-600">
+                    Cliente
+                  </th>
+                  <th className="px-6 py-4 text-sm font-semibold text-gray-600">
+                    Valor
+                  </th>
+                  <th className="px-6 py-4 text-sm font-semibold text-gray-600">
+                    Status
+                  </th>
+                  <th className="px-6 py-4 text-sm font-semibold text-gray-600">
+                    Ações
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
@@ -220,7 +238,10 @@ export default function OrdensdeServico() {
                 {/* Caso nenhum resultado seja encontrado */}
                 {filteredOrders.length === 0 && (
                   <tr>
-                    <td colSpan={6} className="px-6 py-8 text-center text-gray-500 text-sm">
+                    <td
+                      colSpan={6}
+                      className="px-6 py-8 text-center text-gray-500 text-sm"
+                    >
                       Nenhuma ordem encontrada.
                     </td>
                   </tr>

@@ -1,6 +1,6 @@
 'use client'
 
-import Image from 'next/image'; // Otimização de imagens
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
@@ -34,7 +34,7 @@ export default function LoginPage() {
         }
 
         localStorage.setItem('token', 'mock-jwt-token')
-        router.replace('/PaginaInicial')
+        router.replace('/home')
       } else {
         setError('Email ou senha incorretos')
       }
@@ -45,7 +45,7 @@ export default function LoginPage() {
   }
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-[#16222F]">
+    <section className="min-h-screen flex items-center justify-center">
       <div className="w-full max-w-md px-6 py-8 flex flex-col items-center">
         <a
           href="/"
