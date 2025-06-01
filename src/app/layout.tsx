@@ -1,6 +1,7 @@
+import Footer from '@/components/Footer'
+import Navbar from '@/components/Navbar'
 import type { Metadata } from 'next'
 import './globals.css'
-import Navbar from '@/components/Navbar'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://licitacao-three.vercel.app'),
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body className="overflow-x-hidden">
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   )

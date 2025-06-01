@@ -2,8 +2,8 @@ import Image from 'next/image'
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-center">
-      <div className="navbar bg-base-100 shadow-sm max-w-[1600px]">
+    <nav className="flex justify-center fixed top-0 left-0 w-full z-50 bg-base-100 shadow">
+      <div className="navbar max-w-[1600px]">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl">
             <Image
