@@ -8,7 +8,7 @@ const actions = [
   { label: 'Cadastro de Clientes', href: '/cadastros/clientes' },
   { label: 'Cadastro de Funcionários', href: '/cadastros/funcionarios' },
   { label: 'Cadastro de equipamentos', href: '/cadastros/equipamentos' },
-  { label: 'Ordens de Serviço/Faturar OS', href: '/cadastros' },
+  { label: 'Ordens de Serviço/Faturar OS', href: '/ordem-servicos' },
   { label: 'Contas a Pagar/Receber.', href: '/financeiro/pagar-receber' },
   { label: 'Gestão de Estoque', href: '/estoque/gerenciar' },
 ]
