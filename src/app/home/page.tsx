@@ -5,12 +5,12 @@ import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
 const actions = [
-  { label: 'Cadastro de Clientes', href: '/cadastros/clientes' },
-  { label: 'Cadastro de Funcionários', href: '/cadastros/funcionarios' },
-  { label: 'Cadastro de equipamentos', href: '/cadastros/equipamentos' },
-  { label: 'Ordens de Serviço/Faturar OS', href: '/ordem-servicos' },
-  { label: 'Contas a Pagar/Receber.', href: '/ContasPagar&Receber' },
-  { label: 'Gestão de Estoque', href: '/estoque/gerenciar' },
+  { label: 'Cadastro de Clientes', href: '/CadastroClientes' },
+  { label: 'Cadastro de Funcionários', href: '/CadastroFuncionarios' },
+  { label: 'Cadastro de equipamentos', href: '/CadastroEquipamentos' },
+  { label: 'Ordens de Serviço/Faturar OS', href: '/OrdemServicos' },
+  { label: 'Contas a Pagar/Receber.', href: '/ContasPagarReceber' },
+  { label: 'Gestão de Estoque', href: '/GestaoEstoque' },
 ]
 
 export default function Home() {
