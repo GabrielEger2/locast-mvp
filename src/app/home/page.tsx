@@ -9,7 +9,7 @@ const actions = [
   { label: 'Cadastro de Funcionários', href: '/cadastros/funcionarios' },
   { label: 'Cadastro de equipamentos', href: '/cadastros/equipamentos' },
   { label: 'Ordens de Serviço/Faturar OS', href: '/ordem-servicos' },
-  { label: 'Contas a Pagar/Receber.', href: '/financeiro/pagar-receber' },
+  { label: 'Contas a Pagar/Receber.', href: '/ContasPagar&Receber' },
   { label: 'Gestão de Estoque', href: '/estoque/gerenciar' },
 ]
 
