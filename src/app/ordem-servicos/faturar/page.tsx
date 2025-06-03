@@ -10,9 +10,9 @@ interface OSResumo {
 }
 
 interface InvoiceForm {
-  paymentMethod: 'Boleto' | 'Cartão' | ''
-  installments: number // apenas para boleto
-  dueDates: string[] // calculadas
+  paymentMethod: 'Boleto' | 'Crédito' | 'Débito' | ''
+  installments: number
+  dueDates: string[]
   bankAccount: string
   invoiceNumber: string
 }
@@ -40,9 +40,12 @@ export default function GerarFatura() {
   })
 
   useEffect(() => {
-    if (form.paymentMethod === 'Boleto') {
+    if (form.paymentMethod === 'Boleto' || form.paymentMethod === 'Crédito') {
       const parcelas = Array.from({ length: form.installments }, (_, i) =>
-        addDays(new Date(os.issueDate), 30 * i),
+        addDays(
+          new Date(os.issueDate),
+          form.paymentMethod === 'Boleto' ? 30 * i : i * 30,
+        ),
       )
       setForm((prev) => ({ ...prev, dueDates: parcelas }))
     } else {
@@ -51,8 +54,12 @@ export default function GerarFatura() {
   }, [form.paymentMethod, form.installments, os.issueDate])
 
   const totalPorParcela = useMemo(() => {
-    if (form.paymentMethod === 'Boleto' && form.installments > 0)
+    if (
+      (form.paymentMethod === 'Boleto' || form.paymentMethod === 'Crédito') &&
+      form.installments > 0
+    ) {
       return (os.totalValue / form.installments).toFixed(2)
+    }
     return os.totalValue.toFixed(2)
   }, [form.paymentMethod, form.installments, os.totalValue])
 
@@ -121,37 +128,41 @@ export default function GerarFatura() {
                   value={form.paymentMethod}
                   onChange={handleChange}
                   required
+                  className="text-black"
                 >
                   <option value="">Selecione</option>
                   <option value="Boleto">Boleto</option>
-                  <option value="Cartão">Cartão</option>
+                  <option value="Crédito">Cartão de Crédito</option>
+                  <option value="Débito">Cartão de Débito</option>
                 </select>
 
-                {form.paymentMethod === 'Boleto' && (
+                {(form.paymentMethod === 'Boleto' || form.paymentMethod === 'Crédito') && (
                   <input
                     type="number"
                     name="installments"
-                    placeholder="Nº parcelas"
+                    placeholder={`Nº parcelas (máx: ${form.paymentMethod === 'Crédito' ? '24' : '12'})`}
                     min={1}
-                    max={12}
+                    max={form.paymentMethod === 'Crédito' ? 24 : 12}
                     value={form.installments}
                     onChange={handleChange}
                     required
+                    className="text-black"
                   />
                 )}
               </div>
 
-              {form.paymentMethod === 'Boleto' && form.dueDates.length > 0 && (
-                <div className="mt-4 rounded-md border p-3 text-xs text-[#16222F]">
-                  <p className="mb-2 font-medium">
-                    Vencimentos (R$ {totalPorParcela} cada):
-                  </p>
-                  <ul className="list-disc pl-5">
-                    {form.dueDates.map((d, i) => (
-                      <li key={i}>{d}</li>
-                    ))}
-                  </ul>
-                </div>
+              {(form.paymentMethod === 'Boleto' || form.paymentMethod === 'Crédito') && 
+                form.dueDates.length > 0 && (
+                  <div className="mt-4 rounded-md border p-3 text-xs text-black">
+                    <p className="mb-2 font-medium">
+                      Vencimentos (R$ {totalPorParcela} cada):
+                    </p>
+                    <ul className="list-disc pl-5">
+                      {form.dueDates.map((d, i) => (
+                        <li key={i}>{d}</li>
+                      ))}
+                    </ul>
+                  </div>
               )}
             </section>
 
