@@ -2,12 +2,6 @@
 'use client'
 import React, { useEffect, useMemo, useState } from 'react'
 
-/*************************************************************
- * Página "Gerar Fatura / Nota Fiscal" ‑ estilo Locast        *
- * ‑ Tailwind (dark‑blue #16222F + laranja #F09A00).           *
- *************************************************************/
-
-// --- Tipagens ----------------------------------------------
 interface OSResumo {
   id: string
   clientName: string
@@ -18,12 +12,11 @@ interface OSResumo {
 interface InvoiceForm {
   paymentMethod: 'Boleto' | 'Cartão' | ''
   installments: number // apenas para boleto
-  dueDates: string[]   // calculadas
+  dueDates: string[] // calculadas
   bankAccount: string
   invoiceNumber: string
 }
 
-// --- Funções utilitárias -----------------------------------
 const addDays = (base: Date, days: number) => {
   const d = new Date(base)
   d.setDate(d.getDate() + days)
@@ -31,7 +24,6 @@ const addDays = (base: Date, days: number) => {
 }
 
 export default function GerarFatura() {
-  // ✅ Pré‑carregar OS (viria de rota ou contexto). Mock aqui ↓
   const os: OSResumo = {
     id: 'OS‑2025‑001',
     clientName: 'Cliente Exemplo LTDA',
@@ -47,15 +39,14 @@ export default function GerarFatura() {
     invoiceNumber: '',
   })
 
-  // 🚀 Recalcula vencimentos sempre que muda método ou parcelas
   useEffect(() => {
     if (form.paymentMethod === 'Boleto') {
       const parcelas = Array.from({ length: form.installments }, (_, i) =>
         addDays(new Date(os.issueDate), 30 * i),
       )
-      setForm(prev => ({ ...prev, dueDates: parcelas }))
+      setForm((prev) => ({ ...prev, dueDates: parcelas }))
     } else {
-      setForm(prev => ({ ...prev, installments: 1, dueDates: [] }))
+      setForm((prev) => ({ ...prev, installments: 1, dueDates: [] }))
     }
   }, [form.paymentMethod, form.installments, os.issueDate])
 
@@ -65,24 +56,21 @@ export default function GerarFatura() {
     return os.totalValue.toFixed(2)
   }, [form.paymentMethod, form.installments, os.totalValue])
 
-  // --- Handlers --------------------------------------------
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target
-    setForm(prev => ({
+    setForm((prev) => ({
       ...prev,
       [name]: name === 'installments' ? Number(value) : value,
     }))
   }
 
   const handleGenerate = () => {
-    // TODO: chamar API para gerar fatura + retornar PDF
     console.table({ os, ...form })
     alert('Fatura/Nota gerada! (mock)')
   }
 
-  // --- Render ----------------------------------------------
   return (
     <div className="min-h-screen bg-[#16222F] px-4 py-8 text-sm md:text-base">
       <div className="mx-auto w-full max-w-3xl rounded-xl bg-white p-6 shadow-lg">
@@ -114,9 +102,8 @@ export default function GerarFatura() {
           </div>
         </section>
 
-        {/* Formulário de Fatura */}
         <form
-          onSubmit={e => {
+          onSubmit={(e) => {
             e.preventDefault()
             handleGenerate()
           }}
@@ -139,7 +126,6 @@ export default function GerarFatura() {
                 <option value="Cartão">Cartão</option>
               </select>
 
-              {/* Parcela & vencimentos (somente boleto) */}
               {form.paymentMethod === 'Boleto' && (
                 <input
                   type="number"
@@ -168,7 +154,6 @@ export default function GerarFatura() {
             )}
           </section>
 
-          {/* Dados Bancários & Nº Fatura */}
           <section className="grid gap-4 md:grid-cols-2">
             <div>
               <h2 className="mb-2 text-lg font-semibold text-[#F09A00]">
@@ -199,7 +184,6 @@ export default function GerarFatura() {
             </div>
           </section>
 
-          {/* Botão */}
           <div className="text-right">
             <button
               type="submit"

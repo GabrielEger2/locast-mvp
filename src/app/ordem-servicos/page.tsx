@@ -1,6 +1,7 @@
 'use client'
 
 import OrdemServicoModal from '@/components/ordemServicos/OrdemServicoModal'
+import Link from 'next/link'
 import { useState } from 'react'
 import { BiFilterAlt, BiSearchAlt } from 'react-icons/bi'
 
@@ -165,7 +166,7 @@ const OrdemServicos = () => {
                           <a>Editar</a>
                         </li>
                         <li>
-                          <a>Faturar</a>
+                          <Link href={`/ordem-servicos/faturar`}>Faturar</Link>
                         </li>
                         <li>
                           <a>Excluir</a>
