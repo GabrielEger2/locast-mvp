@@ -5,10 +5,10 @@ import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
 const actions = [
-  { label: 'Cadastro de Clientes', href: '/CadastroClientes' },
+  { label: 'Clientes', href: '/clientes' },
   { label: 'Cadastro de Funcionários', href: '/CadastroFuncionarios' },
   { label: 'Cadastro de equipamentos', href: '/CadastroEquipamentos' },
-  { label: 'Ordens de Serviço/Faturar OS', href: '/OrdemServicos' },
+  { label: 'Ordens de Serviço/Faturar OS', href: '/ordem-servicos' },
   { label: 'Contas a Pagar/Receber.', href: '/ContasPagarReceber' },
   { label: 'Gestão de Estoque', href: '/GestaoEstoque' },
 ]

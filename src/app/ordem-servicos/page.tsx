@@ -78,7 +78,7 @@ const page = () => {
   return (
     <div>
       <div className="mt-8 mb-6 flex items-end justify-between">
-        <div className="space-y-4">
+        <div className="space-y-2">
           <h2 className="text-3xl font-semibold">Ordens de Serviço</h2>
           <p className="">Gerencie suas ordens de serviço</p>
         </div>
@@ -92,7 +92,7 @@ const page = () => {
             <div className="dropdown dropdown-start">
               <div tabIndex={0} role="button" className="btn m-1">
                 <BiFilterAlt className="mr-2" size={20} />
-                Filtros
+                Ordem
               </div>
               <ul
                 tabIndex={0}

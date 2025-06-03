@@ -2,16 +2,17 @@
 
 import React, { useState } from 'react'
 
-
 type Pessoa = 'PF' | 'PJ'
 
 export default function ClientesPage() {
   const [tipo, setTipo] = useState<Pessoa>('PF')
   const [form, setForm] = useState<Record<string, string>>({})
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     const { name, value } = e.target
-    setForm(prev => ({ ...prev, [name]: value }))
+    setForm((prev) => ({ ...prev, [name]: value }))
   }
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -27,7 +28,10 @@ export default function ClientesPage() {
       className="w-full border-b border-white/20 bg-transparent px-0.5 py-2 text-white placeholder-white/50 focus:border-[#2196F3] focus:outline-none"
     />
   )
-  const Select = ({ children, ...rest }: React.SelectHTMLAttributes<HTMLSelectElement>) => (
+  const Select = ({
+    children,
+    ...rest
+  }: React.SelectHTMLAttributes<HTMLSelectElement>) => (
     <select
       {...rest}
       className="w-full border-b border-white/20 bg-transparent px-0.5 py-2 text-white placeholder-white/50 focus:border-[#2196F3] focus:outline-none"
@@ -81,26 +85,39 @@ export default function ClientesPage() {
                   <option value="M">Masculino</option>
                   <option value="F">Feminino</option>
                 </Select>
-                <Input type="date" name="dataNascimento" placeholder="Data de nascimento" />
+                <Input
+                  type="date"
+                  name="dataNascimento"
+                  placeholder="Data de nascimento"
+                />
               </>
             ) : (
               <>
                 <Input name="cnpj" placeholder="* CNPJ" required />
                 <Input name="nome" placeholder="* Nome" required />
-                <Input name="inscricaoEstadual" placeholder="Inscrição Estadual" />
+                <Input
+                  name="inscricaoEstadual"
+                  placeholder="Inscrição Estadual"
+                />
                 {/* linha fake para alinhar grade */}
-                <div></div>
+                <div />
               </>
             )}
             {/* Contato comum */}
             <Input name="telefone" placeholder="Telefone" />
             <Input name="celular" placeholder="Telefone Celular" />
-            <Input name="email" placeholder="E‑mail" className="md:col-span-2" />
+            <Input
+              name="email"
+              placeholder="E‑mail"
+              className="md:col-span-2"
+            />
           </section>
 
           {/* --- Endereço --- */}
           <section>
-            <h2 className="mb-4 text-lg font-semibold text-[#FFCC02]">Endereço</h2>
+            <h2 className="mb-4 text-lg font-semibold text-[#FFCC02]">
+              Endereço
+            </h2>
             <div className="grid gap-6 md:grid-cols-2">
               <Input name="cep" placeholder="* CEP" required />
               <Input name="logradouro" placeholder="* Logradouro" required />

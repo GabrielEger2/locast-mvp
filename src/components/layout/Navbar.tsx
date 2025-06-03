@@ -1,11 +1,12 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Navbar = () => {
   return (
     <nav className="flex justify-center fixed top-0 left-0 w-full z-50 bg-base-100 shadow">
       <div className="navbar max-w-[1600px]">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">
+          <Link href="/home" className="btn btn-ghost text-xl">
             <Image
               src="https://static.wixstatic.com/media/a5c95c_7ac329ac7b444b18a6f8272f91153823~mv2.png"
               alt="Locast Guindastes"
@@ -14,7 +15,7 @@ const Navbar = () => {
               height={40}
             />
             Locast
-          </a>
+          </Link>
         </div>
         <div className="flex gap-2">
           <input
