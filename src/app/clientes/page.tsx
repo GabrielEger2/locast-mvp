@@ -112,7 +112,7 @@ const page = () => {
           <h2 className="text-3xl font-semibold">Clientes</h2>
           <p>Gerencie seus clientes</p>
         </div>
-        <Link href="/CriarOs">
+        <Link href="/CadastroClientes">
           <button className="btn btn-primary">Novo Cliente</button>
         </Link>
       </div>

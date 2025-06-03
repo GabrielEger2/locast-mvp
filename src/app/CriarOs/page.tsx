@@ -2,12 +2,6 @@
 'use client'
 import React, { useState } from 'react'
 
-/*************************************************************
- * Página "Criar OS" — estilizada com classes Tailwind para   *
- * seguir a identidade (dark‑blue #16222F + laranja #F09A00)  *
- * parecida com a landing da Locast.                          *
- *************************************************************/
-
 interface ServiceOrder {
   clientName: string
   cnpj: string
@@ -57,7 +51,8 @@ export default function CriarOs() {
       const next = { ...prev, [name]: value }
       if (name === 'hours' || name === 'hourlyRate') {
         const hours = name === 'hours' ? Number(value) : Number(prev.hours)
-        const rate = name === 'hourlyRate' ? Number(value) : Number(prev.hourlyRate)
+        const rate =
+          name === 'hourlyRate' ? Number(value) : Number(prev.hourlyRate)
         next.totalValue = hours * rate
         next[name as 'hours' | 'hourlyRate'] = Number(value)
       }

@@ -1,4 +1,7 @@
-import Link from 'next/link'
+'use client'
+
+import OrdemServicoModal from '@/components/ordemServicos/OrdemServicoModal'
+import { useState } from 'react'
 import { BiFilterAlt, BiSearchAlt } from 'react-icons/bi'
 
 const fakeData = [
@@ -74,17 +77,22 @@ const fakeData = [
   },
 ]
 
-const page = () => {
+const OrdemServicos = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
-    <div>
+    <>
       <div className="mt-8 mb-6 flex items-end justify-between">
         <div className="space-y-2">
           <h2 className="text-3xl font-semibold">Ordens de Serviço</h2>
           <p className="">Gerencie suas ordens de serviço</p>
         </div>
-        <Link href="/CriarOs">
-          <button className="btn btn-primary">Nova Ordem</button>
-        </Link>
+        <button
+          className="btn btn-primary"
+          onClick={() => setIsModalOpen(true)}
+        >
+          Nova Ordem
+        </button>
       </div>
       <div className="mt-10 card shadow-lg p-6 border border-base-200">
         <div className="mb-6 flex items-center">
@@ -178,8 +186,9 @@ const page = () => {
           </div>
         </div>
       </div>
-    </div>
+      <OrdemServicoModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+    </>
   )
 }
 
-export default page
+export default OrdemServicos
