@@ -1,4 +1,7 @@
-import Link from 'next/link'
+'use client'
+
+import ClienteModal from '@/components/clientes/ClienteModal'
+import { useState } from 'react'
 import { BiFilterAlt, BiSearchAlt, BiSolidTrash } from 'react-icons/bi'
 
 const fakeData = [
@@ -105,16 +108,17 @@ const fakeData = [
 ]
 
 const page = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
   return (
-    <div>
+    <>
       <div className="mt-8 mb-6 flex items-end justify-between">
         <div className="space-y-2">
           <h2 className="text-3xl font-semibold">Clientes</h2>
           <p>Gerencie seus clientes</p>
         </div>
-        <Link href="/CadastroClientes">
-          <button className="btn btn-primary">Novo Cliente</button>
-        </Link>
+        <button 
+        onClick={() => setIsModalOpen(true)}
+        className="btn btn-primary">Novo Cliente</button>
       </div>
       <div className="mt-10 card shadow-lg p-6 border border-base-200">
         <div className="mb-6 flex items-center">
@@ -217,7 +221,8 @@ const page = () => {
           </div>
         </div>
       </div>
-    </div>
+      <ClienteModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+    </>
   )
 }
 

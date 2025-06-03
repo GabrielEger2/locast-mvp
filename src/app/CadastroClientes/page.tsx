@@ -8,20 +8,12 @@ export default function ClientesPage() {
   const [tipo, setTipo] = useState<Pessoa>('PF')
   const [form, setForm] = useState<Record<string, string>>({})
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  ) => {
-    const { name, value } = e.target
-    setForm((prev) => ({ ...prev, [name]: value }))
-  }
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.table({ tipo, ...form })
     alert('Cliente cadastrado (mock)')
   }
 
-  /* -------------------------------- UI -------------------------------- */
   const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
     <input
       {...props}
