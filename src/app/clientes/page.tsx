@@ -2,7 +2,7 @@
 
 import ClienteModal from '@/components/clientes/ClienteModal'
 import { useState } from 'react'
-import { BiFilterAlt, BiSearchAlt, BiSolidTrash } from 'react-icons/bi'
+import { BiFilterAlt, BiSearchAlt } from 'react-icons/bi'
 
 const fakeData = [
   {
@@ -107,7 +107,7 @@ const fakeData = [
   },
 ]
 
-const page = () => {
+const Clientes = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   return (
     <>
@@ -116,9 +116,12 @@ const page = () => {
           <h2 className="text-3xl font-semibold">Clientes</h2>
           <p>Gerencie seus clientes</p>
         </div>
-        <button 
-        onClick={() => setIsModalOpen(true)}
-        className="btn btn-primary">Novo Cliente</button>
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="btn btn-primary"
+        >
+          Novo Cliente
+        </button>
       </div>
       <div className="mt-10 card shadow-lg p-6 border border-base-200">
         <div className="mb-6 flex items-center">
@@ -159,7 +162,6 @@ const page = () => {
                 <th>Pedidos</th>
                 <th>Valor Total</th>
                 <th>Data de Criação</th>
-                <th />
               </tr>
             </thead>
             <tbody>
@@ -203,11 +205,6 @@ const page = () => {
                   <td>{cliente.pedidos}</td>
                   <td>{cliente.valorTotal}</td>
                   <td>{cliente.dataCriacao}</td>
-                  <td>
-                    <button className="btn btn-ghost btn-sm">
-                      <BiSolidTrash className="text-red-500" size={20} />
-                    </button>
-                  </td>
                 </tr>
               ))}
             </tbody>
@@ -226,4 +223,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Clientes
