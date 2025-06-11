@@ -4,9 +4,7 @@ export default function CriarFuncionario() {
   return (
     <div className="mx-auto w-full p-4">
       <div className="space-y-2">
-        <h1 className="text-2xl font-bold text-primary mb-4">
-          Criar Funcionário
-        </h1>
+        <h1 className="text-2xl font-bold text-primary mb-4">Funcionário</h1>
         <div className="grid md:grid-cols-2 space-x-6">
           <fieldset className="fieldset">
             <legend className="fieldset-legend">Nome Completo *</legend>

@@ -41,7 +41,7 @@ export default function GerarFatura() {
   })
 
   useEffect(() => {
-    if (form.paymentMethod === 'Boleto' || form.paymentMethod === 'Crédito') {
+    if (form.paymentMethod === 'Boleto') {
       const parcelas = Array.from({ length: form.installments }, (_, i) =>
         addDays(
           new Date(os.issueDate),
@@ -55,10 +55,7 @@ export default function GerarFatura() {
   }, [form.paymentMethod, form.installments, os.issueDate])
 
   const totalPorParcela = useMemo(() => {
-    if (
-      (form.paymentMethod === 'Boleto' || form.paymentMethod === 'Crédito') &&
-      form.installments > 0
-    ) {
+    if (form.paymentMethod === 'Boleto' && form.installments > 0) {
       return (os.totalValue / form.installments).toFixed(2)
     }
     return os.totalValue.toFixed(2)

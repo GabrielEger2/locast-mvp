@@ -8,13 +8,6 @@ type Pessoa = 'PF' | 'PJ'
 const CriarCliente: React.FC = () => {
   const [tipo, setTipo] = useState<Pessoa>('PF')
 
-  const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
-    <input
-      {...props}
-      className="w-full border-b border-white/20 bg-transparent px-0.5 py-2 text-white placeholder-white/50 focus:border-[#2196F3] focus:outline-none"
-    />
-  )
-
   return (
     <div className="mx-auto w-full p-4">
       <div className="mb-6 flex items-center gap-6 text-sm font-medium">

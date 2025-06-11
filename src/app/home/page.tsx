@@ -6,8 +6,8 @@ import { useEffect } from 'react'
 
 const actions = [
   { label: 'Clientes', href: '/clientes' },
-  { label: 'Funcionários', href: '/CadastroFuncionarios' },
-  { label: 'Equipamentos', href: '/CadastroEquipamentos' },
+  { label: 'Funcionários', href: '/funcionarios' },
+  { label: 'Equipamentos', href: '/equipamentos' },
   { label: 'Ordens de Serviço/Faturar OS', href: '/ordem-servicos' },
   { label: 'Contas a Pagar/Receber.', href: '/ContasPagarReceber' },
   { label: 'Gestão de Estoque', href: '/GestaoEstoque' },
