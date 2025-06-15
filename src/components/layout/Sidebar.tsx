@@ -1,0 +1,107 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
+'use client'
+
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { FaBoxOpen, FaTableList, FaUser, FaUserTie } from "react-icons/fa6"
+import ThemeToggle from './ThemeToggle'
+
+
+
+export default function SideBar() {
+  return (
+      <nav className="w-[300px] fixed top-0 left-0 h-screen z-50 p-4 bg-base-200">
+      <div className="flex h-full flex-col w-full">
+        <TitleSection />
+        <div className="space-y-1 px-2">
+          <Option Icon={FaUser} title="Clientes" href="/clientes" />
+          <Option Icon={FaUserTie} title="Funcionarios" href="/funcionarios" />
+          <Option
+            Icon={FaBoxOpen}
+            title="Equipamentos"
+            href="/equipamentos"
+          />
+          <Option Icon={FaTableList } title="Ordens de Serviço" href="/ordem-servicos" />
+        </div>
+      </div>
+    </nav>
+  )
+}
+
+const Option = ({ Icon, title, href }) => {
+  const pathname = usePathname()
+  const isActive = pathname === href.toLowerCase()
+
+  return (
+    <Link href={href}>
+      <button
+        className={`btn btn-ghost w-full justify-start ${
+          isActive && 'btn-active'
+        }`}
+      >
+        <div className="grid h-full mr-2 place-content-center text-lg">
+          <Icon className="" />
+        </div>
+        <span className="text-xs font-medium">{title}</span>
+      </button>
+    </Link>
+  )
+}
+
+const Dropdown = ({ title, children }) => {
+    return (
+        <div className="dropdown dropdown-hover">
+        <label tabIndex={0} className="btn btn-ghost w-full justify-start">
+            <span className="text-xs font-medium">{title}</span>
+        </label>
+        <ul
+            tabIndex={0}
+            className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+        >
+            {children}
+        </ul>
+        </div>
+    )
+}
+
+const TitleSection = () => {
+  return (
+    <div className="mb-2 pb-2 px-2 pt-1">
+      <div className="flex items-center justify-between rounded-md transition-colors">
+        <div className="flex items-center gap-2">
+          <Link href="/home" className="btn btn-ghost text-xl">
+            <Image
+              src="https://static.wixstatic.com/media/a5c95c_7ac329ac7b444b18a6f8272f91153823~mv2.png"
+              alt="Locast Guindastes"
+              className="mr-2 h-10 w-10"
+              width={40}
+              height={40}
+            />
+            Locast
+          </Link>
+        </div>
+        <div>
+            <ThemeToggle />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const Logo = () => {
+  return (
+    <div className="grid size-10 shrink-0 place-content-center">
+      <Image
+        src="/imgs/logo.png"
+        alt="Logo"
+        width={40}
+        height={40}
+        layout="fixed"
+        className="rounded"
+      />
+    </div>
+  )
+}

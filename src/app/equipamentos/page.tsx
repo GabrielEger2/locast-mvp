@@ -1,6 +1,7 @@
 'use client'
 
 import EquipamentoModal from '@/components/equipamentos/EquipamentoModal'
+import PageLayout from '@/components/layout/PageLayout'
 import { useState } from 'react'
 import { BiFilterAlt, BiSearchAlt } from 'react-icons/bi'
 
@@ -80,7 +81,7 @@ const fakeData = [
 const Equipamentos = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   return (
-    <>
+    <PageLayout>
       <div className="mt-8 mb-6 flex items-end justify-between">
         <div className="space-y-2">
           <h2 className="text-3xl font-semibold">Equipamentos</h2>
@@ -155,7 +156,7 @@ const Equipamentos = () => {
         </div>
       </div>
       <EquipamentoModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-    </>
+    </ PageLayout>
   )
 }
 

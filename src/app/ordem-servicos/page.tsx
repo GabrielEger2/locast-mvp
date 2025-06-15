@@ -1,5 +1,6 @@
 'use client'
 
+import PageLayout from '@/components/layout/PageLayout'
 import OrdemServicoModal from '@/components/ordemServicos/OrdemServicoModal'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -82,7 +83,7 @@ const OrdemServicos = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
-    <>
+    <PageLayout>
       <div className="mt-8 mb-6 flex items-end justify-between">
         <div className="space-y-2">
           <h2 className="text-3xl font-semibold">Ordens de Serviço</h2>
@@ -188,7 +189,7 @@ const OrdemServicos = () => {
         </div>
       </div>
       <OrdemServicoModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-    </>
+    </ PageLayout>
   )
 }
 

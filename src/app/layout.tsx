@@ -1,5 +1,3 @@
-import Footer from '@/components/layout/Footer'
-import Navbar from '@/components/layout/Navbar'
 import type { Metadata } from 'next'
 import './globals.css'
 
@@ -28,16 +26,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const setInitialTheme = `
+    (function() {
+      try {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark' || theme === 'light') {
+          document.documentElement.setAttribute('data-theme', theme);
+        }
+      } catch (e) {}
+    })();
+  `
+
   return (
-    <html lang="en">
+    <html lang="pt-BR">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: setInitialTheme }} />
+      </head>
       <body className="overflow-x-hidden">
-        <Navbar />
-        <main className="flex justify-center px-4 min-h-screen">
-          <section className="w-full max-w-[1500px] mt-20 mb-10">
-            {children}
-          </section>
-        </main>
-        <Footer />
+        {children}
       </body>
     </html>
   )

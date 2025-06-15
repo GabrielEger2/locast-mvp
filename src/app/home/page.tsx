@@ -1,5 +1,6 @@
 'use client'
 
+import PageLayout from '@/components/layout/PageLayout'
 import { ArrowRight } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
@@ -35,6 +36,7 @@ export default function Home() {
   }
 
   return (
+    <PageLayout>
     <section className="min-h-screen flex items-center justify-center p-6">
       <div className="w-full max-w-5xl">
         {/* Cabeçalho com botão de logout */}
@@ -73,5 +75,6 @@ export default function Home() {
         </div>
       </div>
     </section>
+    </PageLayout>
   )
 }

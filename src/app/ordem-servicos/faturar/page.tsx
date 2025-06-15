@@ -1,4 +1,5 @@
 'use client'
+import PageLayout from '@/components/layout/PageLayout'
 import Link from 'next/link'
 import React, { useEffect, useMemo, useState } from 'react'
 import { BiArrowFromRight } from 'react-icons/bi'
@@ -77,6 +78,7 @@ export default function GerarFatura() {
   }
 
   return (
+    <PageLayout>
     <div className="mt-8 mb-6">
       <Link href="/ordem-servicos" className="btn btn-ghost items-center">
         <BiArrowFromRight size={24} />
@@ -203,5 +205,6 @@ export default function GerarFatura() {
         </form>
       </div>
     </div>
+    </PageLayout>
   )
 }

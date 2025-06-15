@@ -1,21 +1,11 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Paginacao from './Paginacao'
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-center fixed top-0 left-0 w-full z-50 bg-base-100 shadow">
-      <div className="navbar max-w-[1600px]">
+    <nav className="flex justify-center w-full z-40 mt-4 px-2">
+      <div className="navbar">
         <div className="flex-1">
-          <Link href="/home" className="btn btn-ghost text-xl">
-            <Image
-              src="https://static.wixstatic.com/media/a5c95c_7ac329ac7b444b18a6f8272f91153823~mv2.png"
-              alt="Locast Guindastes"
-              className="mr-2 h-10 w-10"
-              width={40}
-              height={40}
-            />
-            Locast
-          </Link>
+          <Paginacao />
         </div>
         <div className="flex gap-2">
           <input
