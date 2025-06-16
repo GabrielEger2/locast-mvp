@@ -79,132 +79,135 @@ export default function GerarFatura() {
 
   return (
     <PageLayout>
-    <div className="mt-8 mb-6">
-      <Link href="/ordem-servicos" className="btn btn-ghost items-center">
-        <BiArrowFromRight size={24} />
-        <h2 className="ml-2 text-xl font-semibold">OS‑2025‑001</h2>
-      </Link>
-      <div className="card mt-12">
-        <h1 className="mb-6 text-center text-3xl font-bold">
-          Gerar Fatura / Nota Fiscal
-        </h1>
+      <div className="mt-8 mb-6">
+        <Link href="/ordem-servicos" className="btn btn-ghost items-center">
+          <BiArrowFromRight size={24} />
+          <h2 className="ml-2 text-xl font-semibold">OS‑2025‑001</h2>
+        </Link>
+        <div className="card mt-12">
+          <h1 className="mb-6 text-center text-3xl font-bold">
+            Gerar Fatura / Nota Fiscal
+          </h1>
 
-        <section className="mb-8">
-          <h2 className="mb-4 text-lg font-semibold text-primary">OS Resumo</h2>
-          <div className="space-y-1">
-            <p>
-              <span className="font-medium">Número OS:</span> {os.id}
-            </p>
-            <p>
-              <span className="font-medium">Cliente:</span> {os.clientName}
-            </p>
-            <p>
-              <span className="font-medium">Data Emissão:</span> {os.issueDate}
-            </p>
-            <p>
-              <span className="font-medium">Valor Total:</span> R$ 
-              {os.totalValue.toLocaleString('pt-BR', {
-                minimumFractionDigits: 2,
-              })}
-            </p>
-          </div>
-        </section>
-
-        <form
-          onSubmit={(e) => {
-            e.preventDefault()
-            handleGenerate()
-          }}
-          className="space-y-8"
-        >
-          <section>
+          <section className="mb-8">
             <h2 className="mb-4 text-lg font-semibold text-primary">
-              1. Forma de Pagamento
+              OS Resumo
             </h2>
-            <div className="grid gap-4 md:grid-cols-2 ">
-              <select
-                name="paymentMethod"
-                value={form.paymentMethod}
-                onChange={handleChange}
-                required
-                className="select select-bordered w-full"
-              >
-                <option value="">Selecione</option>
-                <option value="Boleto">Boleto</option>
-                <option value="Cartão">Cartão</option>
-              </select>
+            <div className="space-y-1">
+              <p>
+                <span className="font-medium">Número OS:</span> {os.id}
+              </p>
+              <p>
+                <span className="font-medium">Cliente:</span> {os.clientName}
+              </p>
+              <p>
+                <span className="font-medium">Data Emissão:</span>{' '}
+                {os.issueDate}
+              </p>
+              <p>
+                <span className="font-medium">Valor Total:</span> R$
+                {os.totalValue.toLocaleString('pt-BR', {
+                  minimumFractionDigits: 2,
+                })}
+              </p>
+            </div>
+          </section>
 
-              {form.paymentMethod === 'Boleto' && (
+          <form
+            onSubmit={(e) => {
+              e.preventDefault()
+              handleGenerate()
+            }}
+            className="space-y-8"
+          >
+            <section>
+              <h2 className="mb-4 text-lg font-semibold text-primary">
+                1. Forma de Pagamento
+              </h2>
+              <div className="grid gap-4 md:grid-cols-2 ">
+                <select
+                  name="paymentMethod"
+                  value={form.paymentMethod}
+                  onChange={handleChange}
+                  required
+                  className="select select-bordered w-full"
+                >
+                  <option value="">Selecione</option>
+                  <option value="Boleto">Boleto</option>
+                  <option value="Cartão">Cartão</option>
+                </select>
+
+                {form.paymentMethod === 'Boleto' && (
+                  <input
+                    type="number"
+                    name="installments"
+                    placeholder="Nº parcelas"
+                    max={12}
+                    value={form.installments}
+                    onChange={handleChange}
+                    required
+                    className="input input-bordered w-full"
+                  />
+                )}
+              </div>
+
+              {form.paymentMethod === 'Boleto' && form.dueDates.length > 0 && (
+                <div className="mt-4 card border border-base-300 p-4">
+                  <p className="mb-2 font-medium">
+                    Vencimentos (R$ {totalPorParcela} cada):
+                  </p>
+                  <ul className="list-disc pl-5">
+                    {form.dueDates.map((d, i) => (
+                      <li key={i}>{d}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </section>
+
+            <section className="grid gap-4 md:grid-cols-2">
+              <div>
+                <h2 className="mb-2 text-lg font-semibold text-primary">
+                  2. Conta Bancária
+                </h2>
                 <input
-                  type="number"
-                  name="installments"
-                  placeholder="Nº parcelas"
-                  max={12}
-                  value={form.installments}
+                  type="text"
+                  name="bankAccount"
+                  placeholder="Banco / Agência / Conta *"
+                  value={form.bankAccount}
                   onChange={handleChange}
                   required
                   className="input input-bordered w-full"
                 />
-              )}
-            </div>
-
-            {form.paymentMethod === 'Boleto' && form.dueDates.length > 0 && (
-              <div className="mt-4 card border border-base-300 p-4">
-                <p className="mb-2 font-medium">
-                  Vencimentos (R$ {totalPorParcela} cada):
-                </p>
-                <ul className="list-disc pl-5">
-                  {form.dueDates.map((d, i) => (
-                    <li key={i}>{d}</li>
-                  ))}
-                </ul>
               </div>
-            )}
-          </section>
 
-          <section className="grid gap-4 md:grid-cols-2">
-            <div>
-              <h2 className="mb-2 text-lg font-semibold text-primary">
-                2. Conta Bancária
-              </h2>
-              <input
-                type="text"
-                name="bankAccount"
-                placeholder="Banco / Agência / Conta *"
-                value={form.bankAccount}
-                onChange={handleChange}
-                required
-                className="input input-bordered w-full"
-              />
+              <div>
+                <h2 className="mb-2 text-lg font-semibold text-primary">
+                  3. Nº Fatura / NF
+                </h2>
+                <input
+                  type="text"
+                  name="invoiceNumber"
+                  placeholder="Número da Fatura ou Nota Fiscal *"
+                  value={form.invoiceNumber}
+                  onChange={handleChange}
+                  required
+                  className="input input-bordered w-full"
+                />
+              </div>
+            </section>
+
+            <div className="text-right space-x-4">
+              <button type="submit" className="btn btn-secondary">
+                Gerar PDF
+              </button>
+              <button type="submit" className="btn btn-primary">
+                Faturar
+              </button>
             </div>
-
-            <div>
-              <h2 className="mb-2 text-lg font-semibold text-primary">
-                3. Nº Fatura / NF
-              </h2>
-              <input
-                type="text"
-                name="invoiceNumber"
-                placeholder="Número da Fatura ou Nota Fiscal *"
-                value={form.invoiceNumber}
-                onChange={handleChange}
-                required
-                className="input input-bordered w-full"
-              />
-            </div>
-          </section>
-
-          <div className="text-right space-x-4">
-            <button type="submit" className="btn btn-secondary">
-              Gerar PDF
-            </button>
-            <button type="submit" className="btn btn-primary">
-              Faturar
-            </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
     </PageLayout>
   )
 }

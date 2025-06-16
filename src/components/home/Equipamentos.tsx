@@ -1,11 +1,11 @@
 import {
-    Area,
-    AreaChart,
-    Cell,
-    Pie,
-    PieChart,
-    ResponsiveContainer,
-    Tooltip,
+  Area,
+  AreaChart,
+  Cell,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
 } from 'recharts'
 
 const pieData = [

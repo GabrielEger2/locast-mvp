@@ -189,7 +189,7 @@ const OrdemServicos = () => {
         </div>
       </div>
       <OrdemServicoModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-    </ PageLayout>
+    </PageLayout>
   )
 }
 

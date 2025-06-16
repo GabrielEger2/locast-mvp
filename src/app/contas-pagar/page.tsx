@@ -123,7 +123,7 @@ const ContasPagar = () => {
             style: 'currency',
             currency: 'BRL',
           })}{' '}
-          de "{data.descricao}"
+          de {data.descricao}
         </p>
       </div>
 

@@ -9,7 +9,7 @@ interface PageLayoutProps {
 export default function PageLayout({ children }: PageLayoutProps) {
   return (
     <div className="flex min-h-screen">
-        <SideBar />
+      <SideBar />
       <div className="w-full ml-[300px]">
         <Navbar />
         <main className="flex justify-center min-h-screen px-10">

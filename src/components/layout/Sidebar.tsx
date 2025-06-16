@@ -92,18 +92,3 @@ const TitleSection = () => {
     </div>
   )
 }
-
-const Logo = () => {
-  return (
-    <div className="grid size-10 shrink-0 place-content-center">
-      <Image
-        src="/imgs/logo.png"
-        alt="Logo"
-        width={40}
-        height={40}
-        layout="fixed"
-        className="rounded"
-      />
-    </div>
-  )
-}

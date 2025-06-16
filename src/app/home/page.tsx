@@ -22,12 +22,6 @@ export default function Home() {
     checkAuth()
   }, [router])
 
-  const handleLogout = () => {
-    localStorage.removeItem('token')
-    localStorage.removeItem('userEmail')
-    router.replace('/')
-  }
-
   return (
     <PageLayout>
       <div className="flex flex-col items-center h-full w-full gap-8">

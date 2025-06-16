@@ -3,13 +3,13 @@
 import { useMemo } from 'react'
 import { BiLinkExternal } from 'react-icons/bi'
 import {
-    Bar,
-    BarChart,
-    CartesianGrid,
-    ResponsiveContainer,
-    Tooltip,
-    XAxis,
-    YAxis,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from 'recharts'
 
 // — Dados fake (valor em número)

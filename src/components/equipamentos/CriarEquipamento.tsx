@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 
 const tipoOptions = [
   'Caminhão',
@@ -9,33 +9,7 @@ const tipoOptions = [
   'Plataforma Elevatória',
 ]
 
-interface Equipamento {
-  tipo: string
-  marca: string
-  modelo: string
-  ano: string
-  placa: string
-}
-
 const CriarEquipamento: React.FC = () => {
-  const [eq, setEq] = useState<Equipamento>({
-    tipo: '',
-    marca: '',
-    modelo: '',
-    ano: '',
-    placa: '',
-  })
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  ) => {
-    const { name, value } = e.target
-    setEq((prev) => ({ ...prev, [name]: value }))
-  }
-
-  const resetForm = () =>
-    setEq({ tipo: '', marca: '', modelo: '', ano: '', placa: '' })
-
   return (
     <div className="mx-auto w-full p-4">
       <div className="space-y-2">
@@ -87,7 +61,7 @@ const CriarEquipamento: React.FC = () => {
       </div>
 
       <div className="flex justify-end gap-4 pt-4">
-        <button type="button" className="btn btn-ghost" onClick={resetForm}>
+        <button type="button" className="btn btn-ghost">
           Cancelar
         </button>
         <button type="submit" className="btn btn-primary">

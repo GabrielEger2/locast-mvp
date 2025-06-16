@@ -150,7 +150,7 @@ const Funcionarios = () => {
         </div>
       </div>
       <FuncionarioModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-    </ PageLayout>
+    </PageLayout>
   )
 }
 

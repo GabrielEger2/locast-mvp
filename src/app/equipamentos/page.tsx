@@ -156,7 +156,7 @@ const Equipamentos = () => {
         </div>
       </div>
       <EquipamentoModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-    </ PageLayout>
+    </PageLayout>
   )
 }
 

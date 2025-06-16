@@ -42,9 +42,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: setInitialTheme }} />
       </head>
-      <body className="overflow-x-hidden">
-        {children}
-      </body>
+      <body className="overflow-x-hidden">{children}</body>
     </html>
   )
 }

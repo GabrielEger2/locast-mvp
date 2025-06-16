@@ -123,7 +123,7 @@ const ContasReceber = () => {
             style: 'currency',
             currency: 'BRL',
           })}{' '}
-          de "{data.descricao}"
+          de {data.descricao}
         </p>
       </div>
 
@@ -143,7 +143,7 @@ const ContasReceber = () => {
 
   return (
     <PageLayout>
-      <section className="mx-auto w-full max-w-6xl px-4 pt-8">
+      <section className="w-full px-4 pt-8">
         <div className="flex flex-wrap items-center gap-2">
           {filtros.map((f, i) => (
             <button

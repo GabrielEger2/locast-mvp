@@ -220,7 +220,7 @@ const Clientes = () => {
         </div>
       </div>
       <ClienteModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-    </ PageLayout>
+    </PageLayout>
   )
 }
 

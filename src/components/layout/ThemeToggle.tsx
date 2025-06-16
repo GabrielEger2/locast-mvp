@@ -5,7 +5,7 @@ import { BiSolidMoon, BiSolidSun } from 'react-icons/bi'
 
 const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(false)
-  
+
   const toggleTheme = () => {
     const newTheme = isDark ? 'light' : 'dark'
     document.documentElement.setAttribute('data-theme', newTheme)
@@ -15,7 +15,11 @@ const ThemeToggle = () => {
 
   return (
     <button onClick={toggleTheme} className="btn btn-ghost">
-      {isDark ? <BiSolidMoon className="h-6 w-6" /> : <BiSolidSun className="h-6 w-6" />}
+      {isDark ? (
+        <BiSolidMoon className="h-6 w-6" />
+      ) : (
+        <BiSolidSun className="h-6 w-6" />
+      )}
     </button>
   )
 }
