@@ -1,5 +1,8 @@
 'use client'
 
+import Clientes from '@/components/home/Clientes'
+import Contas from '@/components/home/Contas'
+import Equipamentos from '@/components/home/Equipamentos'
 import OrdemServico from '@/components/home/OrdemServico'
 import Stats from '@/components/home/Stats'
 import PageLayout from '@/components/layout/PageLayout'
@@ -27,9 +30,12 @@ export default function Home() {
 
   return (
     <PageLayout>
-      <div className='flex flex-col items-center h-full w-full'>
+      <div className="flex flex-col items-center h-full w-full gap-8">
         <Stats />
         <OrdemServico />
+        <Equipamentos />
+        <Contas />
+        <Clientes />
       </div>
     </PageLayout>
   )

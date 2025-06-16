@@ -1,11 +1,12 @@
 import { BiLinkExternal } from 'react-icons/bi'
 import {
+  Bar,
+  BarChart,
   CartesianGrid,
-  Line,
-  LineChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
+  YAxis,
 } from 'recharts'
 
 const fakeData = [
@@ -103,7 +104,7 @@ const osPorMes = meses.map((mes) => ({
 
 const OrdemServico = () => {
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-start w-full mt-10 gap-6">
+    <div className="flex flex-col lg:flex-row justify-center items-start w-full gap-6">
       <div className="w-full lg:w-1/2 border border-base-200 shadow card">
         <div className="flex justify-between px-6 py-4">
           <h2 className="font-semibold">Últimas Ordens de Serviço:</h2>
@@ -150,13 +151,14 @@ const OrdemServico = () => {
       </div>
 
       <div className="h-full w-full lg:w-1/2 card shadow border border-base-200 p-4">
-        <h2 className="text-lg font-semibold mb-4">
+        <h2 className="font-semibold mb-4">
           Ordens de Serviço nos Últimos 12 Meses
         </h2>
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={osPorMes}>
+          <BarChart data={osPorMes}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="mes" />
+            <YAxis hide />
             <Tooltip
               contentStyle={{
                 backgroundColor: '#1e293b',
@@ -166,13 +168,8 @@ const OrdemServico = () => {
               labelStyle={{ color: '#ccc' }}
               itemStyle={{ color: '#facc15' }}
             />
-            <Line
-              type="monotone"
-              dataKey="quantidade"
-              stroke="#F09A00"
-              strokeWidth={2}
-            />
-          </LineChart>
+            <Bar dataKey="quantidade" fill="#F09A00" radius={[6, 6, 0, 0]} />
+          </BarChart>
         </ResponsiveContainer>
       </div>
     </div>

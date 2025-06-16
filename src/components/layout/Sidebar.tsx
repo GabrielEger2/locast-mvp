@@ -6,25 +6,43 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { FaBoxOpen, FaTableList, FaUser, FaUserTie } from "react-icons/fa6"
+import {
+  FaBoxOpen,
+  FaChartPie,
+  FaFileCircleMinus,
+  FaFileCirclePlus,
+  FaTableList,
+  FaUser,
+  FaUserTie,
+} from 'react-icons/fa6'
+
 import ThemeToggle from './ThemeToggle'
-
-
 
 export default function SideBar() {
   return (
-      <nav className="w-[300px] fixed top-0 left-0 h-screen z-50 p-4 bg-base-200">
+    <nav className="w-[300px] fixed top-0 left-0 h-screen z-50 p-4 bg-base-200">
       <div className="flex h-full flex-col w-full">
         <TitleSection />
         <div className="space-y-1 px-2">
           <Option Icon={FaUser} title="Clientes" href="/clientes" />
           <Option Icon={FaUserTie} title="Funcionarios" href="/funcionarios" />
+          <Option Icon={FaBoxOpen} title="Equipamentos" href="/equipamentos" />
           <Option
-            Icon={FaBoxOpen}
-            title="Equipamentos"
-            href="/equipamentos"
+            Icon={FaTableList}
+            title="Ordens de Serviço"
+            href="/ordem-servicos"
           />
-          <Option Icon={FaTableList } title="Ordens de Serviço" href="/ordem-servicos" />
+          <Option
+            Icon={FaFileCirclePlus}
+            title="Contas a Receber"
+            href="/contas-receber"
+          />
+          <Option
+            Icon={FaFileCircleMinus}
+            title="Contas a Pagar"
+            href="/contas-pagar"
+          />
+          <Option Icon={FaChartPie} title="Relatórios" href="/relatorios" />
         </div>
       </div>
     </nav>
@@ -51,22 +69,6 @@ const Option = ({ Icon, title, href }) => {
   )
 }
 
-const Dropdown = ({ title, children }) => {
-    return (
-        <div className="dropdown dropdown-hover">
-        <label tabIndex={0} className="btn btn-ghost w-full justify-start">
-            <span className="text-xs font-medium">{title}</span>
-        </label>
-        <ul
-            tabIndex={0}
-            className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-        >
-            {children}
-        </ul>
-        </div>
-    )
-}
-
 const TitleSection = () => {
   return (
     <div className="mb-2 pb-2 px-2 pt-1">
@@ -84,7 +86,7 @@ const TitleSection = () => {
           </Link>
         </div>
         <div>
-            <ThemeToggle />
+          <ThemeToggle />
         </div>
       </div>
     </div>
