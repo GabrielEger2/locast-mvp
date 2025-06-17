@@ -12,7 +12,7 @@ interface OSResumo {
 }
 
 interface InvoiceForm {
-  paymentMethod: 'Boleto' | 'Cartão' | ''
+  paymentMethod: 'Boleto' | 'Cartão' | 'Pix' | 'Permuta' | 'TED/DOC'
   installments: number
   dueDates: string[]
   bankAccount: string
