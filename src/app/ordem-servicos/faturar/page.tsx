@@ -12,7 +12,7 @@ interface OSResumo {
 }
 
 interface InvoiceForm {
-  paymentMethod: 'Boleto' | 'Cartão' | 'Pix' | 'Permuta' | 'TED/DOC'
+  paymentMethod: '' | 'Boleto' | 'Cartão' | 'Pix' | 'Permuta' | 'TED/DOC'
   installments: number
   dueDates: string[]
   bankAccount: string
@@ -135,6 +135,9 @@ export default function GerarFatura() {
                   <option value="">Selecione</option>
                   <option value="Boleto">Boleto</option>
                   <option value="Cartão">Cartão</option>
+                  <option value="Pix">Pix</option>
+                  <option value="Permuta">Permuta</option>
+                  <option value="TED/DOC">TED/DOC</option>
                 </select>
 
                 {form.paymentMethod === 'Boleto' && (
