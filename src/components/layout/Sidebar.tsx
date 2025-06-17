@@ -7,8 +7,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
+  FaBook,
   FaBoxOpen,
+  FaChartLine,
   FaChartPie,
+  FaCoins,
   FaFileCircleMinus,
   FaFileCirclePlus,
   FaFlask,
@@ -17,6 +20,7 @@ import {
   FaUser,
   FaUserTie,
 } from 'react-icons/fa6'
+
 import CollapsibleOption from './CollapsibleOption'
 
 import ThemeToggle from './ThemeToggle'
@@ -34,7 +38,11 @@ export default function SideBar() {
             title="Equipamentos"
             baseHref="/equipamentos"
             subOptions={[
-              { title: 'Visão Geral', href: '/equipamentos', icon: FaChartPie },
+              {
+                title: 'Controle Estoque',
+                href: '/equipamentos',
+                icon: FaBook,
+              },
               { title: 'Frota', href: '/equipamentos/frota', icon: FaTruck },
               {
                 title: 'Insumos',
@@ -48,15 +56,27 @@ export default function SideBar() {
             title="Ordens de Serviço"
             href="/ordem-servicos"
           />
-          <Option
-            Icon={FaFileCirclePlus}
-            title="Contas a Receber"
-            href="/contas-receber"
-          />
-          <Option
-            Icon={FaFileCircleMinus}
-            title="Contas a Pagar"
-            href="/contas-pagar"
+          <CollapsibleOption
+            Icon={FaCoins}
+            title="Financeiro"
+            baseHref="/financeiro"
+            subOptions={[
+              {
+                title: 'Relatório Financeiro',
+                href: '/financeiro',
+                icon: FaChartLine,
+              },
+              {
+                title: 'Contas a Receber',
+                href: '/financeiro/contas-receber',
+                icon: FaFileCirclePlus,
+              },
+              {
+                title: 'Contas a Pagar',
+                href: '/financeiro/contas-pagar',
+                icon: FaFileCircleMinus,
+              },
+            ]}
           />
           <Option Icon={FaChartPie} title="Relatórios" href="/relatorios" />
         </div>
