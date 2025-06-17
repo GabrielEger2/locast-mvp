@@ -11,10 +11,13 @@ import {
   FaChartPie,
   FaFileCircleMinus,
   FaFileCirclePlus,
+  FaFlask,
   FaTableList,
+  FaTruck,
   FaUser,
   FaUserTie,
 } from 'react-icons/fa6'
+import CollapsibleOption from './CollapsibleOption'
 
 import ThemeToggle from './ThemeToggle'
 
@@ -26,7 +29,20 @@ export default function SideBar() {
         <div className="space-y-1 px-2">
           <Option Icon={FaUser} title="Clientes" href="/clientes" />
           <Option Icon={FaUserTie} title="Funcionarios" href="/funcionarios" />
-          <Option Icon={FaBoxOpen} title="Equipamentos" href="/equipamentos" />
+          <CollapsibleOption
+            Icon={FaBoxOpen}
+            title="Equipamentos"
+            baseHref="/equipamentos"
+            subOptions={[
+              { title: 'Visão Geral', href: '/equipamentos', icon: FaChartPie },
+              { title: 'Frota', href: '/equipamentos/frota', icon: FaTruck },
+              {
+                title: 'Insumos',
+                href: '/equipamentos/insumos',
+                icon: FaFlask,
+              },
+            ]}
+          />
           <Option
             Icon={FaTableList}
             title="Ordens de Serviço"
@@ -56,12 +72,12 @@ const Option = ({ Icon, title, href }) => {
   return (
     <Link href={href}>
       <button
-        className={`btn btn-ghost w-full justify-start ${
+        className={`btn btn-ghost btn-lg w-full justify-start ${
           isActive && 'btn-active'
         }`}
       >
         <div className="grid h-full mr-2 place-content-center text-lg">
-          <Icon className="" />
+          <Icon />
         </div>
         <span className="text-xs font-medium">{title}</span>
       </button>
