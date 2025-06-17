@@ -60,6 +60,24 @@ const CriarEquipamento: React.FC = () => {
         </div>
       </div>
 
+      <div className="space-y-2 mt-10">
+        <h1 className="text-2xl font-bold text-primary mb-4">Anexar PDF</h1>
+        <div className="grid md:grid-cols-2 space-x-6">
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend">Documento *</legend>
+            <input
+              type="file"
+              accept="application/pdf"
+              className="input w-full"
+            />
+          </fieldset>
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend">Data do Documento *</legend>
+            <input type="date" className="input w-full" />
+          </fieldset>
+        </div>
+      </div>
+
       <div className="flex justify-end gap-4 pt-4">
         <button type="button" className="btn btn-ghost">
           Cancelar
