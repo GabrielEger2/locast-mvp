@@ -20,7 +20,7 @@ const ContasPagar = () => {
     'No mês passado',
     'No próximo mês',
     'A vencer',
-    'Atrasadas (920)',
+    'Atrasadas',
   ]
   const [filtroAtivo, setFiltroAtivo] = useState(0)
 
@@ -43,7 +43,7 @@ const ContasPagar = () => {
       valor: -12500,
       parcela: '4/4',
       tipo: 'Pagar',
-      recebido: false,
+      recebido: true,
     },
     {
       id: '3',
@@ -53,7 +53,7 @@ const ContasPagar = () => {
       valor: -8300,
       parcela: '4/4',
       tipo: 'Pagar',
-      recebido: false,
+      recebido: true,
     },
     {
       id: '4',
@@ -63,7 +63,7 @@ const ContasPagar = () => {
       valor: -15000,
       parcela: '1/1',
       tipo: 'Pagar',
-      recebido: false,
+      recebido: true,
     },
     {
       id: '5',
@@ -163,9 +163,7 @@ const ContasPagar = () => {
 
       <section className="mx-auto w-full max-w-6xl px-4 pt-8">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <CardResumo label="A receber" valor={totalReceber} />
-          <CardResumo label="Recebido" valor={totalRecebido} />
-          <CardResumo label="A pagar" valor={totalPagar} />
+          <CardResumo label="A pagar" valor={-4800} />
           <CardResumo label="Pago" valor={totalPago} />
         </div>
       </section>

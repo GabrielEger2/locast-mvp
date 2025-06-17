@@ -165,8 +165,6 @@ const ContasReceber = () => {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <CardResumo label="A receber" valor={totalReceber} />
           <CardResumo label="Recebido" valor={totalRecebido} />
-          <CardResumo label="A pagar" valor={totalPagar} />
-          <CardResumo label="Pago" valor={totalPago} />
         </div>
       </section>
 
