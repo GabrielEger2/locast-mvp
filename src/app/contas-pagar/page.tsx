@@ -60,7 +60,7 @@ const ContasPagar = () => {
       data: '2025-06-01',
       entidade: 'FOLHA DE PAGAMENTO',
       descricao: 'Salários Operadores',
-      valor: -15000,
+      valor: -150000,
       parcela: '1/1',
       tipo: 'Pagar',
       recebido: true,
