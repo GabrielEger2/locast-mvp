@@ -20,7 +20,7 @@ const StatsReceber = () => {
 
       <div className="stat">
         <div className="stat-title">Quebra / Sobra</div>
-        <div className="stat-value text-success">R$ 167.566,84</div>
+        <div className="stat-value text-success">R$ 30.016,33</div>
       </div>
     </div>
   )
