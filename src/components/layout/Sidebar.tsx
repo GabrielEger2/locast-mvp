@@ -7,9 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
-  FaBook,
   FaBoxOpen,
-  FaChartLine,
   FaChartPie,
   FaCoins,
   FaFileCircleMinus,
@@ -38,11 +36,6 @@ export default function SideBar() {
             title="Equipamentos"
             baseHref="/equipamentos"
             subOptions={[
-              {
-                title: 'Controle Estoque',
-                href: '/equipamentos',
-                icon: FaBook,
-              },
               { title: 'Frota', href: '/equipamentos/frota', icon: FaTruck },
               {
                 title: 'Insumos',
@@ -61,11 +54,6 @@ export default function SideBar() {
             title="Financeiro"
             baseHref="/financeiro"
             subOptions={[
-              {
-                title: 'Relatório Financeiro',
-                href: '/financeiro',
-                icon: FaChartLine,
-              },
               {
                 title: 'Contas a Receber',
                 href: '/financeiro/contas-receber',

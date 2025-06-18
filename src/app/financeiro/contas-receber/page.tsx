@@ -1,6 +1,9 @@
 'use client'
+import Filtros from '@/components/financeiro/Filtros'
+import Stats from '@/components/financeiro/Stats'
 import PageLayout from '@/components/layout/PageLayout'
-import { useState } from 'react'
+import { BiFilterAlt, BiSearchAlt } from 'react-icons/bi'
+
 interface Registro {
   id: string
   data: string
@@ -12,183 +15,229 @@ interface Registro {
   recebido: boolean
 }
 
-const ContasReceber = () => {
-  const filtros = [
-    'Hoje',
-    'Ontem',
-    'Neste mês',
-    'No mês passado',
-    'No próximo mês',
-    'A vencer',
-    'Atrasadas (920)',
-  ]
-  const [filtroAtivo, setFiltroAtivo] = useState(0)
-
+const ContasPagar = () => {
   const registros: Registro[] = [
     {
       id: '1',
       data: '2025-06-01',
-      entidade: 'PRELLOG PRE‑FABRICADOS LTDA',
-      descricao: 'Documento 9688',
-      valor: 480,
+      entidade: 'OFICINA MECÂNICA PESADA LTDA',
+      descricao: 'Manutenção Guindaste Liebherr LTM 1200',
+      valor: -4800,
       parcela: '2/5',
-      tipo: 'Receber',
+      tipo: 'Pagar',
       recebido: false,
     },
     {
       id: '2',
       data: '2025-06-01',
-      entidade: 'PRELLOG PRE‑FABRICADOS LTDA',
-      descricao: 'Documento 9688',
-      valor: 1000,
+      entidade: 'POSTO DIESEL MASTER',
+      descricao: 'Abastecimento frota - NF 2453',
+      valor: -12500,
       parcela: '4/4',
-      tipo: 'Receber',
-      recebido: false,
+      tipo: 'Pagar',
+      recebido: true,
     },
     {
       id: '3',
       data: '2025-06-01',
-      entidade: 'PRELLOG PRE‑FABRICADOS LTDA',
-      descricao: 'Documento 9688',
-      valor: 300,
+      entidade: 'SEGUROS PROTEÇÃO TOTAL',
+      descricao: 'Seguro anual guindastes',
+      valor: -8300,
       parcela: '4/4',
-      tipo: 'Receber',
+      tipo: 'Pagar',
       recebido: false,
     },
     {
       id: '4',
       data: '2025-06-01',
-      entidade: 'PRELLOG PRE‑FABRICADOS LTDA',
-      descricao: 'Documento 9688',
-      valor: 3000,
-      parcela: '2/4',
-      tipo: 'Receber',
-      recebido: false,
+      entidade: 'FOLHA DE PAGAMENTO',
+      descricao: 'Salários Operadores',
+      valor: -150000,
+      parcela: '1/1',
+      tipo: 'Pagar',
+      recebido: true,
     },
     {
       id: '5',
       data: '2025-06-01',
-      entidade: 'PLASC ‑ PLÁSTICOS SANTA CATARINA LTDA',
-      descricao: 'Documento 5387',
-      valor: 3220,
+      entidade: 'PNEUS GIGANTE LTDA',
+      descricao: 'Troca pneus caminhão munck',
+      valor: -6220,
       parcela: '1/1',
-      tipo: 'Receber',
+      tipo: 'Pagar',
       recebido: true,
+    },
+    {
+      id: '6',
+      data: '2025-06-01',
+      entidade: 'OFICINA MECÂNICA PESADA LTDA',
+      descricao: 'Manutenção Guindaste Liebherr LTM 1200',
+      valor: -4800,
+      parcela: '2/5',
+      tipo: 'Pagar',
+      recebido: false,
+    },
+    {
+      id: '7',
+      data: '2025-06-01',
+      entidade: 'POSTO DIESEL MASTER',
+      descricao: 'Abastecimento frota - NF 2453',
+      valor: -12500,
+      parcela: '4/4',
+      tipo: 'Pagar',
+      recebido: false,
+    },
+    {
+      id: '8',
+      data: '2025-06-01',
+      entidade: 'SEGUROS PROTEÇÃO TOTAL',
+      descricao: 'Seguro anual guindastes',
+      valor: -8300,
+      parcela: '4/4',
+      tipo: 'Pagar',
+      recebido: true,
+    },
+    {
+      id: '9',
+      data: '2025-06-01',
+      entidade: 'FOLHA DE PAGAMENTO',
+      descricao: 'Salários Operadores',
+      valor: -150000,
+      parcela: '1/1',
+      tipo: 'Pagar',
+      recebido: true,
+    },
+    {
+      id: '10',
+      data: '2025-06-01',
+      entidade: 'PNEUS GIGANTE LTDA',
+      descricao: 'Troca pneus caminhão munck',
+      valor: -6220,
+      parcela: '1/1',
+      tipo: 'Pagar',
+      recebido: false,
     },
   ]
 
-  const totalReceber = registros
-    .filter((r) => r.tipo === 'Receber' && !r.recebido)
-    .reduce((acc, r) => acc + r.valor, 0)
-  const totalRecebido = registros
-    .filter((r) => r.tipo === 'Receber' && r.recebido)
-    .reduce((acc, r) => acc + r.valor, 0)
-  const totalPagar = 0
-  const totalPago = 0
-
-  const CardResumo = ({ label, valor }: { label: string; valor: number }) => (
-    <div className="rounded-xl border-t-4 border-[#FFCC02] bg-white p-4 shadow">
-      <p className="text-sm font-medium text-[#1E293B]">{label}</p>
-      <p className="mt-1 text-2xl font-semibold text-[#1E293B]">
-        {valor.toLocaleString('pt-BR', {
-          style: 'currency',
-          currency: 'BRL',
-        })}
-      </p>
-    </div>
-  )
-
-  const LinhaRegistro = ({ data }: { data: Registro }) => (
-    <li className="flex gap-4 border-b border-white/10 px-4 py-3 last:border-none">
-      <span
-        className={`mt-1 h-3 w-3 shrink-0 rounded-full ${
-          data.recebido
-            ? 'bg-green-500'
-            : data.tipo === 'Pagar'
-              ? 'bg-red-500'
-              : 'bg-gray-400'
-        }`}
-      />
-
-      <div className="flex-1 text-xs sm:text-sm">
-        <div className="flex flex-wrap items-center gap-2">
-          <strong className="truncate text-white/90">{data.entidade}</strong>
-          <span className="rounded bg-white/10 px-1 text-[10px] tracking-wide text-white/60">
-            Parcela {data.parcela}
-          </span>
-        </div>
-        <p className="text-white/70">
-          {data.valor > 0 ? '+' : ''}
-          {data.valor.toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'BRL',
-          })}{' '}
-          de {data.descricao}
-        </p>
-      </div>
-
-      <div className="flex shrink-0 items-center gap-4 text-xs font-semibold text-[#2196F3]">
-        {data.tipo === 'Receber' && !data.recebido && (
-          <button className="hover:underline">RECEBER</button>
-        )}
-        {data.tipo === 'Pagar' && !data.recebido && (
-          <button className="hover:underline">PAGAR</button>
-        )}
-        {data.recebido && <button className="hover:underline">ESTORNAR</button>}
-        <button className="hover:underline">EDITAR</button>
-        <button className="hover:underline">MAIS ▾</button>
-      </div>
-    </li>
-  )
-
   return (
     <PageLayout>
-      <section className="w-full px-4 pt-8">
-        <div className="flex flex-wrap items-center gap-2">
-          {filtros.map((f, i) => (
-            <button
-              key={f}
-              onClick={() => setFiltroAtivo(i)}
-              className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
-                i === filtroAtivo
-                  ? 'bg-[#2196F3] text-white'
-                  : 'bg-white/10 text-white hover:bg-white/20'
-              }`}
-            >
-              {f}
-            </button>
-          ))}
+      <div className="mt-8 mb-6 flex flex-col w-full">
+        <Filtros />
+        <Stats />
+        <div className="mt-6 card shadow-lg p-6 border border-base-200">
+          <div className="mb-6 flex items-center">
+            <div className="flex-1">
+              <div className="dropdown dropdown-start">
+                <div tabIndex={0} role="button" className="btn m-1">
+                  <BiFilterAlt className="mr-2" size={20} />
+                  Ordem
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                >
+                  <li>
+                    <a>Nome</a>
+                  </li>
+                  <li>
+                    <a>Data de Criação</a>
+                  </li>
+                  <li>
+                    <a>Valor</a>
+                  </li>
+                </ul>
+              </div>
+              <label className="input">
+                <BiSearchAlt className="opacity-50" size={20} />
+                <input type="search" required placeholder="Filtro" />
+              </label>
+            </div>
+            <button className="btn btn-primary">Novo Registro</button>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Registro</th>
+                  <th>Data</th>
+                  <th>Valor</th>
+                  <th />
+                </tr>
+              </thead>
+              <tbody>
+                {registros.map((registro) => (
+                  <tr
+                    className="hover:bg-base-300 cursor-pointer"
+                    key={registro.id}
+                  >
+                    <td className="flex justify-center items-center mt-2 w-16">
+                      <div className="form-control">
+                        <label className="label cursor-pointer">
+                          <input
+                            type="checkbox"
+                            checked={registro.recebido}
+                            className="checkbox checkbox-primary"
+                          />
+                        </label>
+                      </div>
+                    </td>
+                    <td className="flex-1 text-xs sm:text-sm">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <strong className="truncate">
+                          {registro.entidade}
+                        </strong>
+                        <span className="badge badge-sm">
+                          Parcela {registro.parcela}
+                        </span>
+                      </div>
+                      <p>
+                        {registro.valor > 0 ? '+' : ''}
+                        {registro.valor.toLocaleString('pt-BR', {
+                          style: 'currency',
+                          currency: 'BRL',
+                        })}{' '}
+                        de {registro.descricao}
+                      </p>
+                    </td>
+                    <td>
+                      {new Date(registro.data).toLocaleDateString('pt-BR')}
+                    </td>
+                    <td>
+                      {registro.valor.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                      })}
+                    </td>
+                    <td className="flex gap-4 link link-primary justify-end mr-4">
+                      {registro.tipo === 'Receber' && !registro.recebido && (
+                        <button className="hover:underline">RECEBER</button>
+                      )}
+                      {registro.tipo === 'Pagar' && !registro.recebido && (
+                        <button className="hover:underline">PAGAR</button>
+                      )}
+                      {registro.recebido && (
+                        <button className="hover:underline">ESTORNAR</button>
+                      )}
+                      <button className="hover:underline">EDITAR</button>
+                      <button className="hover:underline">MAIS ▾</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <div className="join mt-4 flex justify-center">
+              <button className="join-item btn">«</button>
+              <button className="join-item btn">Página 1</button>
+              <button className="join-item btn">»</button>
+            </div>
+          </div>
         </div>
-      </section>
-
-      <section className="mx-auto w-full max-w-6xl px-4 pt-8">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <CardResumo label="A receber" valor={totalReceber} />
-          <CardResumo label="Recebido" valor={totalRecebido} />
-        </div>
-      </section>
-
-      <section className="mx-auto w-full max-w-6xl px-4 pt-8">
-        <div className="rounded-xl bg-white/5 shadow-md">
-          <h2 className="border-b border-white/10 px-4 py-3 text-sm font-semibold text-[#FFCC02]">
-            Vencimentos
-          </h2>
-          <ul>
-            {registros.map((r) => (
-              <LinhaRegistro key={r.id} data={r} />
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <button
-        title="Novo Lançamento"
-        className="fixed bottom-6 right-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#FFCC02] text-3xl font-bold text-[#16222F] shadow-lg transition hover:scale-105"
-      >
-        +
-      </button>
+      </div>
     </PageLayout>
   )
 }
 
-export default ContasReceber
+export default ContasPagar
