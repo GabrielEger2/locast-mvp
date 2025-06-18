@@ -102,7 +102,8 @@ const CriarOrdemServico: React.FC = () => {
       // Recalcula o total
       if (field === 'quantity' || field === 'rate') {
         newEquipments[index].total =
-          Number(newEquipments[index].quantity) * Number(newEquipments[index].rate)
+          Number(newEquipments[index].quantity) *
+          Number(newEquipments[index].rate)
       }
 
       return {
@@ -335,7 +336,7 @@ const CriarOrdemServico: React.FC = () => {
               className="textarea textarea-bordered w-full"
             />
           </div>
-          
+
           <div className="flex justify-end items-center gap-4">
             <span className="text-lg font-semibold">Total Geral:</span>
             <div className="text-xl font-bold text-primary">
